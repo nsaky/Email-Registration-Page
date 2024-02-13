@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images\favicon-32x32.png">
+  
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link href="dist/output.css" rel="stylesheet">
+</head>
+<body class="min-w-[375px] bg-[#36384E] flex  items-center flex-col h-[1000px] justify-center">
+<div class="min-[860px]:p-8 min-[860px]:flex max-w-[950px] min-[860px]:flex-row-reverse rounded-2xl  bg-white">
+  <!-- Sign-up form start -->
+<img src="images\illustration-sign-up-mobile.svg" width="375" height="284" alt="mobile_background" class="w-full rounded-b-lg min-[860px]:hidden">
+<img src="images\illustration-sign-up-desktop.svg" width="400" height="593" alt="desktop_background" class=" rounded-lg max-[860px]:hidden">
+<div class="mx-4 my-8 bg-white min-[860px]:rounded-lg min-[400px]:pr-10 max-[400px]:pl-3">
+<h1 class="text-5xl  font-roboto text-[#242742] font-extrabold mb-7">Stay updated!</h1>
+  
+<p class="font-roboto text-[#242742] mb-7">Join 60,000+ product managers receiving monthly updates on:</p>
+
+  
+<ul class=" space-y-3 font-roboto text-[#242742] mb-10">
+  <li><img src="images\icon-list.svg" alt="list_icon" class="inline mr-3"> Product discovery and building what matters</li>
+  <li><img src="images\icon-list.svg" alt="list_icon" class="inline mr-3">Measuring to ensure updates are a success</li>
+  <li><img src="images\icon-list.svg" alt="list_icon" class="inline mr-3">And much more!</li>
+</ul>
+<form id="myForm">
+  <div class="flex justify-between mb-3">
+  <label for="email" class="font-bold text-xs text-[#242742]">
+  Email address
+  </label>
+  <p id="error_msg" class="font-bold text-xs text-[#FF6257] hidden ">Valid email required</p>
+</div>
+  <input id="input_box" type="text" name="email" placeholder="email@company.com" class="bg-transparent rounded-md active:border-[#242742] px-8 py-4 border-[9294A0] border-2 active:text-[#242742] w-full mb-5">
+  <input type="submit" name="submit" value="Subscribe to monthly newsletter
+  " class="bg-[#36384E]  font-bold px-8 py-4 h-14 rounded-lg hover:bg-gradient-to-r w-full from-[#FF6257] to-orange-500 text-white">
+</form>
+</div>
+</div>
+
+
+  <script>
+    const form = document.getElementById('myForm');
+    const error_msg= document.getElementById('error_msg')
+    const input_box= document.getElementById('input_box')
+    function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+
+      if(validateEmail(input_box.value)){
+        localStorage.setItem('email', input_box.value)
+        window.location.href ="success.html"
+        
+        
+      }else if(input_box.value===''){
+        error_msg.style.display="block"
+        input_box.style.borderColor="red"
+        input_box.style.backgroundColor="#FECACA"
+        input_box.style.color="red"
+        
+      }else{
+        error_msg.style.display="block"
+        input_box.style.borderColor="red"
+        input_box.style.backgroundColor="#FECACA"
+        input_box.style.color="red"
+
+      }
+      
+    });
+  </script>
+</body>
+</html>
